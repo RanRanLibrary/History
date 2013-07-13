@@ -1,3 +1,3 @@
-<p><H3>History programs</H3></p>
+<p><H3>Programming Contest History</H3></p>
 
-<p><H5>(^q^)</H5></p>
+<p>Written by nvip, oyas, and ebaty.</p>
