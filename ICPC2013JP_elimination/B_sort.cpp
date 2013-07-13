@@ -4,6 +4,7 @@
 int count[51], pena[51][11], time[51], rank[51];
 
 //比較関数
+//p > q のとき負の値、p < q のとき正の値、を返す。どっちでもいいとき0を返す。
 int cmp( const void* P, const void* Q){
 	int p = *(int*)P, q = *(int*)Q;
 	if( count[p] < count[q] ||
@@ -35,25 +36,6 @@ int main(){
 				pena[t][p] += 20;
 			}
 		}
-
-		//並び替え（バブルソート）
-		/*
-		bool flag = true;
-		while( flag ){	//入れ替えがなくなるまでループ
-			flag = false;
-			for(int i=1; i < T; i++){
-				int p = rank[i], q = rank[i+1];
-				//入れ替え
-				if( count[p] < count[q] ||
-					count[p] == count[q] && time[p] > time[q] ||
-					count[p] == count[q] && time[p] == time[q] && p < q ){
-						rank[i] = q;
-						rank[i+1] = p;
-						flag = true;
-				}
-			}
-		}
-		*/
 
 		//並び替え（クイックソート）
 		qsort( rank+1, T, sizeof(int), cmp );
