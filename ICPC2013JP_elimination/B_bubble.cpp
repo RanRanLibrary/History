@@ -1,9 +1,21 @@
 #include <cstdio>
 #include <algorithm>
 
+int count[51], pena[51][11], time[51], rank[51];
+
+//比較関数
+int cmp( const void* P, const void* Q){
+	int p = *(int*)P, q = *(int*)Q;
+	if( count[p] < count[q] ||
+		count[p] == count[q] && time[p] > time[q] ||
+		count[p] == count[q] && time[p] == time[q] && p < q ){
+			return 1;
+	}
+	return -1;
+}
+
 int main(){
 	int M, T, P, R, m, t, p, j;
-	int count[51], pena[51][11], time[51], rank[51];
 	
 	while( scanf("%d %d %d %d", &M, &T, &P, &R), M > 0 ){
 		//初期化
@@ -25,6 +37,7 @@ int main(){
 		}
 
 		//並び替え（バブルソート）
+		/*
 		bool flag = true;
 		while( flag ){	//入れ替えがなくなるまでループ
 			flag = false;
@@ -40,6 +53,10 @@ int main(){
 				}
 			}
 		}
+		*/
+
+		//並び替え（クイックソート）
+		qsort( rank+1, T, sizeof(int), cmp );
 
 		//出力
 		for(int i=1; i <= T; i++ ){
